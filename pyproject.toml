@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "fastapi-users"
+version = "0.1.0"
+description = ""
+authors = ["chechenec <gutenvecher@gmail.com>"]
+readme = "README.md"
+packages = [{include = "fastapi_users"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.109.2"
+uvicorn = {extras = ["standard"], version = "^0.27.1"}
+pydantic = "^2.6.1"
+sqlalchemy = "^2.0.27"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+ruff = "^0.2.1"
+isort = "^5.13.2"
+mypy = "^1.8.0"
+alembic = "^1.13.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
