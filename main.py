@@ -4,6 +4,7 @@ from fastapi.exceptions import RequestValidationError
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 
+from fastapi_users.config.app import app_config
 from fastapi_users.config.log import logger
 
 
@@ -26,6 +27,8 @@ def create_app() -> FastAPI:
 
 def main():
     app = create_app()
+
+    print(app_config.database_ulr)
 
     uvicorn.run(
         app=app,
