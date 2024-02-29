@@ -1,14 +1,14 @@
 from datetime import datetime
 
 from sqlalchemy import Integer, String, func
-from sqlalchemy.dialects.postgresql import TIMESTAMP
+from sqlalchemy.dialects.postgresql import TIMESTAMP, BYTEA
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
 class Base(DeclarativeBase): ...
 
 
-class User(Base):
+class UserModel(Base):
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
@@ -18,5 +18,5 @@ class User(Base):
         server_default=func.now(),
     )
 
-    username: Mapped[str | None] = mapped_column(String(256), nullable=False)
-    password: Mapped[str | None] = mapped_column(String(256), nullable=False)
+    username: Mapped[str] = mapped_column(String(256), nullable=False, unique=True)
+    hashed_password: Mapped[bytes] = mapped_column(BYTEA, nullable=False)

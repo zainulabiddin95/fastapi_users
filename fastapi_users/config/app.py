@@ -4,14 +4,20 @@ from typing import Self
 
 class AppConfig:
     database_url: str
+    jwt_secret: str
 
     def __init__(self: Self) -> None:
         database_url = os.environ.get("DATABASE_URL")
+        jwt_secret = os.environ.get("JWT_SECRET")
 
         if not database_url:
             raise ValueError("error")
 
+        if not jwt_secret:
+            raise ValueError("jwt_error")
+
         self.database_url = database_url
+        self.jwt_secret = jwt_secret
 
     @property
     def async_database_url(self: Self) -> str:

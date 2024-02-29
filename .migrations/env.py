@@ -22,7 +22,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-from fastapi_users.models.user import User  # type: ignore
+from fastapi_users.models.user import UserModel  # type: ignore
 
 target_metadata = Base.metadata
 
